@@ -1,4 +1,4 @@
-import { GradientBackgroundCon } from '@/QuoteGenerator/QuoteGeneratorElements'
+import { GradientBackgroundCon, Prueba } from '@/QuoteGenerator/QuoteGeneratorElements'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
        {/* Background */}
        <GradientBackgroundCon>
-        
+        <Prueba>Hola</Prueba>
        </GradientBackgroundCon>
     </>
   )
