@@ -1,4 +1,4 @@
-import { GradientBackgroundCon, Prueba } from '@/QuoteGenerator/QuoteGeneratorElements'
+import { GradientBackgroundCon, Prueba } from '@/components/QuoteGenerator/QuoteGeneratorElements'
 import Head from 'next/head'
 import Image from 'next/image'
 
