@@ -21,7 +21,17 @@ export const GradientBackgroundCon = styled.div`
   }
 `;
 
-export const Prueba = styled.h1`
-  color: red;
+export const BackgroundImage1 = styled(Image)`
+  position: relative;
+  z-index: 1;
+  margin-left: -10px;
+  margin-top: -10px;
+`;
+
+export const BackgroundImage2 = styled(Image)`
+  position: fixed;
+  z-index: 1;
+  right: 0px;
+  bottom: -10px;
 `;
 
