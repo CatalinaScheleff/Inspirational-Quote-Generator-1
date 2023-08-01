@@ -48,7 +48,7 @@ export const FooterCon = styled.div`
 `;
 
 export const RedSpan = styled.span`
-  color: red
+  color: red;
 `;
 
 export const FooterLink = styled(Link)`
@@ -57,16 +57,20 @@ export const FooterLink = styled(Link)`
 `;
 
 export const QuoteGeneratorCon = styled.div`
+// As the screen is expanding or decreasing //
   min-height: 350px;
   min-width: 350px;
   height: 70vh;
   width: 70vw;
+// Border //
   border: 2px solid #ffffff22;
   border-radius: 15px;
+// Center the div inside a div //
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   position: absolute;
+  // Above the background //
   z-index: 2;
 
   background: rgba( 0,0,70,0.3);
@@ -77,6 +81,7 @@ export const QuoteGeneratorCon = styled.div`
   border: 1px solid rgba ( 225, 255, 255, 0.18 );
 `;
 
+// Create a div to keep centering //
 export const QuoteGenertorInnerCon = styled.div`
   top: 50%;
   left: 50%;
