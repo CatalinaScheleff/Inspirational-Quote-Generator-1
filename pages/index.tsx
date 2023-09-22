@@ -22,8 +22,8 @@ export default function Home() {
        {/* Background */}
        <GradientBackgroundCon>
 
-      {/* Quote Generator Module Pop-Up */}
-      {/* <QuoteGeneratorModule
+      {/* Quote Generator Modal Pop-Up */}
+      {/* <QuoteGeneratorModal 
       /> */}
 
     <QuoteGeneratorCon>
