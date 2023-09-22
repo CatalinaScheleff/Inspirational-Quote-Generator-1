@@ -40,7 +40,7 @@ export default function Home() {
           </GenerateQuoteButtonText>
         </GenerateQuoteButton>
       </QuoteGenertorInnerCon>
-    </QuoteGeneratorCon>
+    </QuoteGeneratorCon> 
 
         {/*Background Images  */}
        <BackgroundImage1 

@@ -21,13 +21,14 @@ export const GradientBackgroundCon = styled.div`
   }
 `;
 
+// Image on Top/Left
 export const BackgroundImage1 = styled(Image)`
   position: relative;
   z-index: 1;
   margin-left: -10px;
   margin-top: -10px;
 `;
-
+// Image onn Bottom/Right
 export const BackgroundImage2 = styled(Image)`
   position: fixed;
   z-index: 1;
