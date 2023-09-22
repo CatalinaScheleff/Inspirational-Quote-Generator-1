@@ -28,7 +28,7 @@ export const BackgroundImage1 = styled(Image)`
   margin-left: -10px;
   margin-top: -10px;
 `;
-// Image onn Bottom/Right
+// Image on Bottom/Right
 export const BackgroundImage2 = styled(Image)`
   position: fixed;
   z-index: 1;
