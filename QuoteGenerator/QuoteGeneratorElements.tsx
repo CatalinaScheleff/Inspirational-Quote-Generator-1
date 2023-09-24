@@ -156,4 +156,4 @@ export const GenerateQuoteButtonText = styled.div`
   position: absolute;
   width: 100%;
   text-align: center;
-`;
+`; 
