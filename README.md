@@ -1,28 +1,41 @@
 # ✨ Inspirational Quote Generator ✨
 
+AWS:
+
+Instalation:
+
+npm install -g @aws-amplify/cli
+
+amplify configure
+
+Create an acount Amplify AWS
+
+region: sa-south-1
+
+create an IAM user
+
 In this epic build, we're going to create a completely serverless quote generator using AWS as our cloud back-end and NextJS/TypeScript as our front-end.
 
-The most epic part is...we're going to be generating images in a server without any expensive software or hardware. 
- 
+The most epic part is...we're going to be generating images in a server without any expensive software or hardware.
+
 What you'll learn in this build is how to:
 
- 👨‍💻 Build a ~cool~ front-end for a quote generator
+👨‍💻 Build a ~cool~ front-end for a quote generator
 
- 💡 Write a script to fetch a random inspirational quote from ZenQuotes' API 
+💡 Write a script to fetch a random inspirational quote from ZenQuotes' API
 
- 🌩 Use AWS to generate a quote graphic for you in the cloud & then let you download the file
+🌩 Use AWS to generate a quote graphic for you in the cloud & then let you download the file
 
- 🔥 Deploy live
+🔥 Deploy live
 
-
-This build combines ZenQuotes' amazing API for fetching quotes, AWS Amplify for framework deployment and hosting, NextJS and Typescript for our front-end, styled-components to handle our styling,  and some spicy backend scripting 🌶
-
+This build combines ZenQuotes' amazing API for fetching quotes, AWS Amplify for framework deployment and hosting, NextJS and Typescript for our front-end, styled-components to handle our styling, and some spicy backend scripting 🌶
 
 # Getting Started
 
 **IMPORTANT:** Without the AWS backend configured, you will probably see an error like this if you try to run the app as-is: `Module not found: Can't resolve '../src/aws-exports'` Please check out the [full tutorial on freeCodeCamp here](https://www.youtube.com/watch?v=FRmCxj9K7II) or scroll to the below section titled: "Instructions for Building the Project from Scratch" to get started building the project.
 
 First, install the project dependencies from the root of the project:
+
 ```bash
 npm i
 # or
@@ -42,6 +55,7 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 # Instructions for Building the Project from Scratch
+
 The front-end development, which includes components, pages, framework setup, and styles, can be replicated with the code in this codebase.
 
 The back-end development and deployment to AWS is intended to be built from scratch following the steps. It is imperative to build the project from start to finish so that you do not miss any of the requisite configuration steps.
@@ -50,7 +64,7 @@ The back-end development and deployment to AWS is intended to be built from scra
 
 ⌨️ [0:07:17]() 📂 Set up your GitHub Repository
 
-⌨️ [0:10:53]() 💻 Create a new Next.js + Styled Components project 
+⌨️ [0:10:53]() 💻 Create a new Next.js + Styled Components project
 
 ⌨️ [0:26:37]() 🅰️ Add Google Fonts to the App
 
@@ -64,7 +78,7 @@ The back-end development and deployment to AWS is intended to be built from scra
 
 ⌨️ [1:36:23]() 📡 Use Node.js' fetch Function to Call ZenQuotes' API to Generate Images
 
-⌨️ [2:04:33]() ⚙️ Use the AWS Amplify CLI to Initialize the Project 
+⌨️ [2:04:33]() ⚙️ Use the AWS Amplify CLI to Initialize the Project
 
 ⌨️ [2:12:01]() 🔄 Configure the App to Communicate with AWS Amplify
 
@@ -86,7 +100,7 @@ The back-end development and deployment to AWS is intended to be built from scra
 
 ⌨️ [3:11:48]() 💬 Create the Quote Generator Pop-Up Modal with useState Hooks
 
-⌨️ [3:35:15]() ⏳ Create Loading States for when the API calls AWS Lambda 
+⌨️ [3:35:15]() ⏳ Create Loading States for when the API calls AWS Lambda
 
 ⌨️ [4:02:26]() 🌠 Create a Button with a Lottie Image
 
@@ -108,12 +122,14 @@ The back-end development and deployment to AWS is intended to be built from scra
 
 ⌨️ [5:52:47]() 🐞 Debug the CI/CD Pipeline by Modifying the AWS Amplify Build Settings
 
-⌨️ [6:02:47]() 🚀 Celebrate the Final Build! 
+⌨️ [6:02:47]() 🚀 Celebrate the Final Build!
 
 ⌨️ [6:04:44]() 🎉 Project Wrap Up
 
 # Instructions for Deploying to AWS (Hosting)
+
 To add hosting to your project, you will want to run `amplify add hosting` and then follow the instructions including:
+
 - Amplify Managed Hosting (not S3/CloudFront)
 - Git-Based deployments with CI/CD
 - Creating a `prod` branch of your code in GitHub and hooking that into the Amplify CI/CD pipeline.
@@ -127,6 +143,7 @@ Next, we will need to edit the `amplify.yml` file to change the build settings o
 ## **PART 1:** Lambda Script Update:
 
 ### BEFORE UPDATE:
+
 ```json
 {
   "name": "inspirationalquotelambda",
@@ -145,10 +162,10 @@ Next, we will need to edit the `amplify.yml` file to change the build settings o
     "sharp": "^0.31.3"
   }
 }
-
 ```
 
 ### ✅ AFTER UPDATE:
+
 ```json
 {
   "name": "inspoquotelambda",
@@ -173,16 +190,18 @@ Next, we will need to edit the `amplify.yml` file to change the build settings o
 ```
 
 ## **PART 2:** `amplify.yml` AWS Amplify Build Settings Update:
+
 To find this page, go to the AWS Amplify app for your project in the AWS Management Console, then go to `App settings`, and then `Build settings`. On this page, you will see an editor with a title `App build specification`, to which you will edit the file with the following:
 
 ### BEFORE UPDATE:
+
 ```yml
 version: 1
 backend:
   phases:
     build:
       commands:
-        - '# Execute Amplify CLI with the helper script'
+        - "# Execute Amplify CLI with the helper script"
         - amplifyPush --simple
 frontend:
   phases:
@@ -195,13 +214,14 @@ frontend:
   artifacts:
     baseDirectory: .next
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*
 ```
 
 ### ✅ AFTER UPDATE:
+
 ```yml
 version: 1
 backend:
@@ -209,7 +229,7 @@ backend:
     build:
       commands:
         - npm run install:sharp --prefix ./amplify/backend/function/inspoquoteLambda/src
-        - '# Execute Amplify CLI with the helper script'
+        - "# Execute Amplify CLI with the helper script"
         - amplifyPush --simple
 frontend:
   phases:
@@ -222,7 +242,7 @@ frontend:
   artifacts:
     baseDirectory: .next
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*
