@@ -2,17 +2,26 @@
 
 AWS:
 
+Cloud computing plataform offerd by Amazon.com
+Provides cloud services like computing, storage, databases, analytics, security, etc. This services are offered through data centers around the world, and allows businesses and developers to use remote and scalable computing resourses.
+
 Instalation:
-
 npm install -g @aws-amplify/cli
-
 amplify configure
-
 Create an acount Amplify AWS
-
 region: sa-south-1
-
 create an IAM user
+
+AWS Lambda: Serverless computing service that allows you to run code without provisioning and managing servers in response to events.
+Used to build and deploy microservices that respond to API requests, processinng data stored in various AWS services loke S3 ( Simple Storage Service ), automate tasks like rezising images when uploaded to S3 or cleanning up old data, process and analyze files as soonn as they are uploaded to S3.
+
+AWS IAM (Identity and Access Management): Coontrol access to AWS services and resources. Manage users, groups, roles and permissions within AWS account.
+
+Server: Is a computer or software system that provides services, resourses and functionality to other computers or programs called clients.
+
+AWS Amplify: Development framework and set of ttools too simpliify the process of building full-stack web and mobile applications.
+
+-
 
 In this epic build, we're going to create a completely serverless quote generator using AWS as our cloud back-end and NextJS/TypeScript as our front-end.
 
