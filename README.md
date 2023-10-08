@@ -1,6 +1,6 @@
 # ✨ Inspirational Quote Generator ✨
 
-AWS:
+# AWS:
 
 Cloud computing plataform offerd by Amazon.com
 Provides cloud services like computing, storage, databases, analytics, security, etc. This services are offered through data centers around the world, and allows businesses and developers to use remote and scalable computing resourses.
@@ -13,13 +13,15 @@ region: sa-south-1
 create an IAM user
 
 AWS Lambda: Serverless computing service that allows you to run code without provisioning and managing servers in response to events.
-Used to build and deploy microservices that respond to API requests, processinng data stored in various AWS services loke S3 ( Simple Storage Service ), automate tasks like rezising images when uploaded to S3 or cleanning up old data, process and analyze files as soonn as they are uploaded to S3.
+Used to build and deploy microservices that respond to API requests, processinng data stored in various AWS services like S3 ( Simple Storage Service ), automate tasks like rezising images when uploaded to S3 or cleaning up old data, process and analyze files as soonn as they are uploaded to S3.
 
 AWS IAM (Identity and Access Management): Coontrol access to AWS services and resources. Manage users, groups, roles and permissions within AWS account.
 
 Server: Is a computer or software system that provides services, resourses and functionality to other computers or programs called clients.
 
-AWS Amplify: Development framework and set of ttools too simpliify the process of building full-stack web and mobile applications.
+AWS Amplify: Development framework and set of tools to simplify the process of building full-stack web and mobile applications.
+
+## AWS Amplify acts as a bridge between development and AWS services, making it easier to build and deploy cloud-powered applications. It can be used to configure and deploy AWS Lambda functions as part of your backend, and it simplifies the integration of AWS IAM for secure authentication and authorization. When using these services together, developers can create robust, scalable, and secure applications with less manual configuration and coding.
 
 -
 
