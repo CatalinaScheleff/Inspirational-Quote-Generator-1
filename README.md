@@ -23,6 +23,37 @@ AWS Amplify: Development framework and set of tools to simplify the process of b
 
 ## AWS Amplify acts as a bridge between development and AWS services, making it easier to build and deploy cloud-powered applications. It can be used to configure and deploy AWS Lambda functions as part of your backend, and it simplifies the integration of AWS IAM for secure authentication and authorization. When using these services together, developers can create robust, scalable, and secure applications with less manual configuration and coding.
 
+amplify init
+
+I didn't had the permission to amplify:CreateApp. And in IAM Management Console did'nt apear the perrmissionn as well. So I created the permission.
+
+Add this imports to \_app.tsx file:
+// AWS imports
+import { Amplify } from 'aws-amplify';
+import awsExports from '../src/aws-exports';
+
+Amplify.configure({ ...awsExports, ssr: true });
+
+In backend/api/schema.graphql desactivate this:
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+AWS AppSync GraphQL
+amplify add api
+Select from one of the below mentioned services: GraphQL
+? Here is the GraphQL API that we will create. Select a setting to edit or continue Authorization modes: API key (default, expiration time: 7 days
+from now)
+? Choose the default authorization type for the API IAM
+? Configure additional auth types? Yes
+? Choose the additional authorization types you want to configure for the API
+? Here is the GraphQL API that we will create. Select a setting to edit or continue Continue
+? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)
+✔ Do you want to edit the schema now? (Y/n) · yes
+Could not find selected code editor (Visual Studio Code) on your machine.
+? Try opening with system-default editor instead? No
+✅ Successfully added resource inspirationalquote locally
+
+Amazon Cognito
+
 -
 
 In this epic build, we're going to create a completely serverless quote generator using AWS as our cloud back-end and NextJS/TypeScript as our front-end.

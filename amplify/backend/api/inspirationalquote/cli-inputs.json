@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "inspirationalquote",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AWS_IAM"
+    }
+  }
+}
