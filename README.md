@@ -27,6 +27,9 @@ amplify init
 
 I didn't had the permission to amplify:CreateApp. And in IAM Management Console did'nt apear the perrmissionn as well. So I created the permission.
 
+Install Amplify libraries:
+npm install aws-amplify @aws-amplify/ui-react
+
 Add this imports to \_app.tsx file:
 // AWS imports
 import { Amplify } from 'aws-amplify';
@@ -34,11 +37,12 @@ import awsExports from '../src/aws-exports';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
-In backend/api/schema.graphql desactivate this:
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+Cloud infrastructure:
 
-AWS AppSync GraphQL
+AWS AppSync GraphQL:
+
 amplify add api
+
 Select from one of the below mentioned services: GraphQL
 ? Here is the GraphQL API that we will create. Select a setting to edit or continue Authorization modes: API key (default, expiration time: 7 days
 from now)
@@ -51,6 +55,11 @@ from now)
 Could not find selected code editor (Visual Studio Code) on your machine.
 ? Try opening with system-default editor instead? No
 ✅ Successfully added resource inspirationalquote locally
+
+In backend/api/schema.graphql desactivate this:
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+configure schema
 
 Amazon Cognito
 
