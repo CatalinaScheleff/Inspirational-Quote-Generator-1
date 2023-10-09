@@ -16,7 +16,13 @@
         "inspirationalquote6e107399": {}
       },
       "function": {
-        "inspoquoteLambda": {}
+        "inspoquoteLambda": {
+          "deploymentBucketName": "amplify-inspirationalquote-dev-132405-deployment",
+          "s3Key": "amplify-builds/inspoquoteLambda-642f61506c497a466732-build.zip"
+        }
+      },
+      "api": {
+        "inspirationalquote": {}
       }
     }
   }

@@ -5,11 +5,11 @@
 Cloud computing plataform offerd by Amazon.com
 Provides cloud services like computing, storage, databases, analytics, security, etc. This services are offered through data centers around the world, and allows businesses and developers to use remote and scalable computing resourses.
 
-Instalation:
+Instalation: https://docs.amplify.aws/cli/start/install/
 npm install -g @aws-amplify/cli
 amplify configure
 Create an acount Amplify AWS
-region: sa-south-1
+region: sa-east-1
 create an IAM user
 
 AWS Lambda: Serverless computing service that allows you to run code without provisioning and managing servers in response to events.
@@ -27,6 +27,8 @@ amplify init
 
 I didn't had the permission to amplify:CreateApp. And in IAM Management Console did'nt apear the perrmissionn as well. So I created the permission.
 
+new directory amplify and src
+
 Install Amplify libraries:
 npm install aws-amplify @aws-amplify/ui-react
 
@@ -37,10 +39,12 @@ import awsExports from '../src/aws-exports';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
+Now we want to add an API to our application, so we are goiing to add the schema, and API and Lambda function for that
 Cloud infrastructure:
 
-AWS AppSync GraphQL:
+# AWS AppSync GraphQL:
 
+To add out API
 amplify add api
 
 Select from one of the below mentioned services: GraphQL
@@ -59,9 +63,86 @@ Could not find selected code editor (Visual Studio Code) on your machine.
 In backend/api/schema.graphql desactivate this:
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-configure schema
+Who can access to my API?
+configure schema and then add auth directives
+we need:
+create a query (a wey to speak to lambda)
+lambda function
+public data (How many quotes?)
 
-Amazon Cognito
+## Amazon Cognito
+
+Add authentication with Amazon Cognito and IAM
+
+amplify add auth
+default
+username
+yes advanced settings
+email
+email domain filterinf allowlist
+
+amplify update auth
+user sign up sign in connected with AWS IAM controls (enables per-user Storage features for images or other content, Analytics, and more)
+Yes (important)
+No
+No
+No
+OFF
+Enabled
+enter
+enter
+enter
+30
+No
+Yes
+No
+No
+
+amplify status
+
+amplify add function
+lambda funnction
+name
+nodeJS
+Hello World
+No
+Yes
+Enter
+
+amplify status (we can see what are we going to be pushing to the cloud) (API - Auth - Function)
+We are going to be able to create a integration between our API and our Lambda function
+And then create a relationship between the lambda function and the dinamo DB table that was created.
+Every time the function runs succesfully we want to configure the table QuoteAppData with an especific object and increment quotesGenerated + 1.
+Create resourse access to allow lambda to speak to the dinamo db table but this resourses need to be created and and then live in AWS before we start to dinamicaly calling this programatically
+
+amplify push
+yes
+yes
+typescript
+enter
+yes
+enter
+enter
+
+Add @auth Directives (GraphQL API)
+
+amplify push
+
+## Amazon Dinamo DB (NoSQL)
+
+https://sa-east-1.console.aws.amazon.com/amplify/home?region=sa-east-1#/d2x107wjfctt2n
+
+API
+QuoteAppDataTable
+Explore elements
+Create Item
+ID: 12232-234234-234234234-234234234 ?
+queryName: LIVE
+quotesGenerated: 0
+createdAt
+updatedAt
+
+## AWSDate Time (Node.js)
 
 -
 

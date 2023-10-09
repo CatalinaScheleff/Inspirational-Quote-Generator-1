@@ -5,26 +5,22 @@
 #Query - speak to lambda
 # Lambda function
 type Query {
-  generateAQuote(input: AWSJSON!) : String
-  # @auth(rules: [
-  #   {allow: public, provider: iam},
-  # ])
-  @function(name: "inspoquoteLambda-${env}")
+  generateAQuote(input: AWSJSON!): String
+    @auth(rules: [{ allow: public, provider: iam }])
+    #Call a lambda function
+    #-${env} = Allows to work from different cloud backends
+    @function(name: "inspoquoteLambda-${env}")
 }
 
 # Public Data
 type QuoteAppData
-@models
-# @auth(rules: [
-#   {allow: public, provider: iam, operations: [read]},
-# ])
-{
+  # Configure a dynamo DB table for this type
+  @model
+  @auth(rules: [{ allow: public, provider: iam, operations: [read] }]) {
   id: ID!
   queryName: String!
-    @index{
-      name: "QuoteQueryName"
-      queryField: "quoteQueryName"
-    }
+    # Global secondary index (GSI)
+    @index(name: "QuoteQueryName", queryField: "quoteQueryName")
   quotesGenerated: Int!
   createdAt: String!
   updatedAt: String!

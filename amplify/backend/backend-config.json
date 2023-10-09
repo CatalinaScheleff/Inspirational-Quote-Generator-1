@@ -46,5 +46,23 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+  },
+  "parameters": {
+    "AMPLIFY_function_inspoquoteLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "inspoquoteLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_inspoquoteLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "inspoquoteLambda"
+        }
+      ]
+    }
   }
 }
