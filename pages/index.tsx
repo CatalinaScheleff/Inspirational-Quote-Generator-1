@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -7,9 +7,45 @@ import { GradientBackgroundCon, BackgroundImage1, BackgroundImage2, FooterCon, F
 // Assets
 import Clouds1 from '@/assets/Clouds1.png'
 import Clouds2 from '@/assets/Clouds2.png'
+import { API } from 'aws-amplify'
+import { quoteQueryName } from '@/src/graphql/queries'
+
+//interface for our DynamoDB object
+
+interface UpdateQuoteInfoData {
+  id: string;
+  queryName: string;
+  quotesGenerated: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+//type guard for out fetch function
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
+
+  //Function to fetch out DynamoDB object (quotes generated)
+  const updateQuoteInfo = async () => {
+    try {
+      const response = await API.graphql<UpdateQuoteInfoData>({
+        query: quoteQueryName,
+        authMode: "AWS_IAM",
+        variables:{
+          queryName: "LIVE",
+        },
+      })
+      console.log('response', response);
+       
+    } catch (error) {
+      console.log('error getting quote data', error)
+      
+    }
+  }
+
+  useEffect(() => {
+    updateQuoteInfo();
+  }, [])
 
   return (
     <>
@@ -35,7 +71,9 @@ export default function Home() {
           Looking for a splash of inspiration? Generate a quote card with a random innspirational quote provided by <FooterLink href="https://zenquotes.io/" target='_blank' rel='noopener noreferrer'>ZenQuotes API</FooterLink>
         </QuoteGeneratorSubTitle>
         <GenerateQuoteButton>
-          <GenerateQuoteButtonText onClick={null}>
+          <GenerateQuoteButtonText 
+          //onClick={null}
+          >
             Make a Quote
           </GenerateQuoteButtonText>
         </GenerateQuoteButton>
