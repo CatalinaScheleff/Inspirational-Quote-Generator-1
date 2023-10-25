@@ -42,7 +42,7 @@ Amplify.configure({ ...awsExports, ssr: true });
 Now we want to add an API to our application, so we are goiing to add the schema, and API and Lambda function for that
 Cloud infrastructure:
 
-# AWS AppSync GraphQL:
+# AWS AppSync create GraphQL API:
 
 To add out API
 amplify add api
@@ -66,7 +66,7 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 Who can access to my API?
 configure schema and then add auth directives
 we need:
-create a query (a wey to speak to lambda)
+create a query (a wey to speak to lambda) "query" refers to a request for information from a database
 lambda function
 public data (How many quotes?)
 
@@ -82,7 +82,7 @@ email
 email domain filterinf allowlist
 
 amplify update auth
-user sign up sign in connected with AWS IAM controls (enables per-user Storage features for images or other content, Analytics, and more)
+user sign up sign in connected with AWS IAM controls (enables per-user Storage features for images or other content, Analytics, and more) IMPORTANTE
 Yes (important)
 No
 No
@@ -101,8 +101,8 @@ No
 amplify status
 
 amplify add function
-lambda funnction
-name
+lambda function
+function's name "inspoquoteLambda"
 nodeJS
 Hello World
 No
@@ -110,7 +110,7 @@ Yes
 Enter
 
 amplify status (we can see what are we going to be pushing to the cloud) (API - Auth - Function)
-We are going to be able to create a integration between our API and our Lambda function
+We are going to be able to create an integration between our API and our Lambda function
 And then create a relationship between the lambda function and the dinamo DB table that was created.
 Every time the function runs succesfully we want to configure the table QuoteAppData with an especific object and increment quotesGenerated + 1.
 Create resourse access to allow lambda to speak to the dinamo db table but this resourses need to be created and and then live in AWS before we start to dinamicaly calling this programatically
@@ -124,9 +124,16 @@ yes
 enter
 enter
 
-Add @auth Directives (GraphQL API)
+amplify push
+
+amplify status
+
+# Add @auth Directives (GraphQL API)
+
+add auth directives to the API to prevent certain users to runing certain features (Lambda function and Publlic data)
 
 amplify push
+Yes to all
 
 ## Amazon Dinamo DB (NoSQL)
 
