@@ -151,6 +151,15 @@ updatedAt
 
 ## AWSDate Time (Node.js)
 
+npm i moment
+
+(index.js)
+const moment = require("moment");
+
+const awsDateTime = moment().utc().format("YYYY-MM-DDTHH:mm:ss:SSS[Z]");
+
+console.log(awsDateTime);
+
 -
 
 In this epic build, we're going to create a completely serverless quote generator using AWS as our cloud back-end and NextJS/TypeScript as our front-end.
