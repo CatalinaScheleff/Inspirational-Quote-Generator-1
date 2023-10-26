@@ -9,6 +9,8 @@ import Clouds1 from '@/assets/Clouds1.png'
 import Clouds2 from '@/assets/Clouds2.png'
 import { API } from 'aws-amplify'
 import { quoteQueryName } from '@/src/graphql/queries'
+import { GraphQLResult } from '@aws-amplify/api';
+
 
 //interface for our DynamoDB object
 
@@ -21,6 +23,13 @@ interface UpdateQuoteInfoData {
 }
 
 //type guard for out fetch function
+function isGraphQLResultForquoteQueryName (response: any): response is GraphQLResult<{
+  quoteQueryName: {
+    items: [UpdateQuoteInfoData];
+  };
+}> {
+  return response.data && response.data.quoteQueryName && response.data.quoteQueryName.items;
+}
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
@@ -36,7 +45,20 @@ export default function Home() {
         },
       })
       console.log('response', response);
+      //setNumberOfQuotes();
        
+      //Create type guards
+      if (!isGraphQLResultForquoteQueryName(response)) {
+        throw new Error('Unexpected response from API.graphql');
+      }
+
+      if (!response.data) {
+        throw new Error('Response data is undefined');
+      }
+
+      const receivedNumberOfQuotes = response.data.quoteQueryName.items[0].quotesGenerated;
+      setNumberOfQuotes(receivedNumberOfQuotes);
+      
     } catch (error) {
       console.log('error getting quote data', error)
       
