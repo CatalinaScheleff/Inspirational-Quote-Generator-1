@@ -113,8 +113,8 @@ export default function Home() {
       close ={handleCloseGenerator}
       processingQuote={processingQuote}
       setProcessingQuote={setProcessingQuote}
-      quoteRecived={quoteReceived}
-      setQuoteRecived={setQuoteReceived}
+      quoteReceived={quoteReceived}
+      setQuoteReceived={setQuoteReceived}
       />
 
     <QuoteGeneratorCon>
