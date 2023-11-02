@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 // Components
 import { GradientBackgroundCon, BackgroundImage1, BackgroundImage2, FooterCon, FooterLink, RedSpan, QuoteGeneratorCon, QuoteGenertorInnerCon, QuoteGeneratorTitle, QuoteGeneratorSubTitle, GenerateQuoteButton, GenerateQuoteButtonText} from '@/components/QuoteGenerator/QuoteGeneratorElements'
-import QuoteGeneratorModal from '@/components/QuoteGenerator'
 
 // Assets
 import Clouds1 from '@/assets/Clouds1.png'
@@ -12,6 +11,7 @@ import Clouds2 from '@/assets/Clouds2.png'
 import { API } from 'aws-amplify'
 import { quoteQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api';
+import QuoteGeneratorModal from '@/components/QuoteGenerator'
 
 
 //interface for our DynamoDB object
@@ -83,6 +83,17 @@ export default function Home() {
   const handleOpenGenerator = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setOpenGenerator(true);
+    setProcessingQuote(true);
+    try {
+      //Run Lambda Function
+      // setProcessingQuote(false);
+      setTimeout(() => {
+        setProcessingQuote(false);
+      }, 3000);
+    } catch (error) {
+      console.log('error generating quote', error);
+      setProcessingQuote(false);
+    }
   }
 
   return (
@@ -114,10 +125,8 @@ export default function Home() {
         <QuoteGeneratorSubTitle>
           Looking for a splash of inspiration? Generate a quote card with a random innspirational quote provided by <FooterLink href="https://zenquotes.io/" target='_blank' rel='noopener noreferrer'>ZenQuotes API</FooterLink>
         </QuoteGeneratorSubTitle>
-        <GenerateQuoteButton>
-          <GenerateQuoteButtonText 
-          onClick={handleOpenGenerator}
-          >
+        <GenerateQuoteButton onClick={handleOpenGenerator}>
+          <GenerateQuoteButtonText>
             Make a Quote
           </GenerateQuoteButtonText>
         </GenerateQuoteButton>
