@@ -15,8 +15,8 @@ const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 // Image generation packages
-const sharp = require("sharp");
-const fetch = require("node-fetch");
+const sharp = require('sharp');
+const fetch = require('node-fetch');
 const path = require('path');
 const fs = require('fs');
 
@@ -144,7 +144,7 @@ exports.handler = async (event) => {
         // Composite this image together
         const timestamp = new Date().toLocaleString().replace(/[^\d]/g, "");
         const svgBuffer = Buffer.from(svgImage);
-         
+        
         const imagePath = path.join('/tmp', 'quote-card.png');
 
         const image = await sharp(selectedBackgroundImage)
@@ -159,7 +159,7 @@ exports.handler = async (event) => {
 
         // Function: Update DynamoDB object in table
         try {
-            updateQuoteDDBObject();
+            await updateQuoteDDBObject();
         } catch (error) {
             console.log('error updating quote object in DynamoDB', error)
         }
