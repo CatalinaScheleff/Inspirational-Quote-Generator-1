@@ -174,5 +174,5 @@ exports.handler = async (event) => {
             isBase64Encoded: true,
         };
     }
-   return await getRandomQuote(apiURL);
+   return getRandomQuote(apiURL);
 };

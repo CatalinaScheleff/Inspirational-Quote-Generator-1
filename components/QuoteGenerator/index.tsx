@@ -21,7 +21,7 @@ const style = {
 }
 
 const QuoteGeneratorModal = ({
-  open, 
+  open,
   close,
   processingQuote,
   setProcessingQuote,
@@ -48,7 +48,7 @@ const QuoteGeneratorModal = ({
   useEffect(() => {
     if (quoteReceived) {
       const binaryData = Buffer.from(quoteReceived, 'base64');
-      const blob = new Blob([binaryData], {type: 'image/png'});
+      const blob = new Blob([binaryData], { type: 'image/png' });
       const blobUrlGenerated = URL.createObjectURL(blob);
       console.log(blobUrlGenerated);
       setBlobUrl(blobUrlGenerated);
@@ -61,60 +61,60 @@ const QuoteGeneratorModal = ({
 
   return (
     <Modal
-    id="QuoteGeneratorModal"
-    aria-labelledby="spring-modal-quotegeneratormodal"
-    aria-describedby="spring-modal-opens-and-closes-quote-generator"
-    open={open}
-    onClose={close}
-    closeAfterTransition
-    BackdropComponent={Backdrop}
-    BackdropProps={{
+      id="QuoteGeneratorModal"
+      aria-labelledby="spring-modal-quotegeneratormodal"
+      aria-describedby="spring-modal-opens-and-closes-quote-generator"
+      open={open}
+      onClose={close}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
         timeout: 500,
-    }}
+      }}
     >
       <Fade in={open}>
         <QuoteGeneratorModalCon sx={style}>
           <QuoteGeneratorModalInnerCon>
             {/* State #1: Processing request of quote + quote state is empty */}
             {(processingQuote === true && quoteReceived === null) &&
-            <>
-              <ModalCircularProgress
-                size={"8rem"}
-                thickness={2.5}
+              <>
+                <ModalCircularProgress
+                  size={"8rem"}
+                  thickness={2.5}
                 />
-              <QuoteGeneratorTitle>
-                Creating your quote...
-              </QuoteGeneratorTitle>
-              <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
-                {wiseDevQuote}
-                <br />
-                <span style={{fontSize: 26}}>{wiseDevQuoteAuthor}</span>
-              </QuoteGeneratorSubTitle>
-            </>
+                <QuoteGeneratorTitle>
+                  Creating your quote...
+                </QuoteGeneratorTitle>
+                <QuoteGeneratorSubTitle style={{ marginTop: "20px" }}>
+                  {wiseDevQuote}
+                  <br />
+                  <span style={{ fontSize: 26 }}>{wiseDevQuoteAuthor}</span>
+                </QuoteGeneratorSubTitle>
+              </>
             }
 
             {/* State #2 Quote state fulfilled */}
-            {quoteReceived === null &&
+            {quoteReceived !== null &&
               <>
                 <QuoteGeneratorTitle>
                   Download your quote!
                 </QuoteGeneratorTitle>
-                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
+                <QuoteGeneratorSubTitle style={{ marginTop: "20px" }}>
                   See a preview:
                 </QuoteGeneratorSubTitle>
                 <ImageBlobCon>
-                    <ImageBlob
+                  <ImageBlob
                     quoteReceived={quoteReceived}
                     blobUrl={blobUrl}
-                    />
-                    
-                  </ImageBlobCon>
-                  <AnimatedDownloadButton
-                  handleDownload={handleDownload}
                   />
+
+                </ImageBlobCon>
+                <AnimatedDownloadButton
+                  handleDownload={handleDownload}
+                />
               </>
             }
-            
+
           </QuoteGeneratorModalInnerCon>
         </QuoteGeneratorModalCon>
       </Fade>
